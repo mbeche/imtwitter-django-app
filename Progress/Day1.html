@@ -1,0 +1,54 @@
+<h1>Brainstorming Project</h1>
+<em>April 28, 2018 at 10:40am</em>
+
+<p>At the mind I took some time this morning to create a mind map of what I'm working to do here.</p>
+
+<h2>Django Components</h2>
+<ul>
+  <li>Models</li>
+  <li>Views</li>
+  <li>Templates</li>
+  <li>URLs</li>
+</ul>
+
+<p>From my understanding I'll only need one app for this project. For a minute I was wondering if I would need to create an app for creating a user, posting, commenting, etc., but from the documentation and tutorials I'm looking at it appears that I can do that all in one. We'll see!</p>
+
+<h2>Models</h2>
+<p>This system will need three basic models:</p>
+<ul>
+  <li>*Post</li>
+  <li>*Comment</li>
+  <li>User</li>
+  <li>PM</li>
+</ul>
+
+<p>*I need to figure out where in the framework I'm going to put the URL recognition and URL to image import.</p>
+<p>Thankfully I don't need to do all of the bullet points on the list, so I'll triage and plan out my app creation in bite size chunks. I guess I could look at this project as an iteration and then divide the project into sprints.</p>
+
+<h2>Views</h2>
+<p>According to the blog by <a href="https://chrisbartos.com/articles/how-i-learned-django-in-3-months/">Chris Bartos</a> I mentioned in yesterdays post, each View is a verb. From my experience, this seems accurate, so now I will break out the app specs into a variety of views:
+  <ul>
+    <li>User interaction with account</li>
+    <ul>
+      <li>Sign Up</li>
+      <li>Login</li>
+      <li>Logout</li>
+      <li>Delete Account</li>
+    </ul>
+    <li>Sort and search</li>
+    <ul>
+      <li>View all posts</li>
+      <li>View posts by user*</li>
+      <li>Search posts**</li>
+    </ul>
+    <li>Logged on user capabilities</li>
+    <ul>
+      <li>Create post</li>
+      <li>Edit post</li>
+      <li>Create comment</li>
+      <li>Edit comment</li>
+    </ul>
+  </ul>
+<p>*I will need to make decisions about how the view will display post and/or comments by user. Just do posts? If I do posts and comments should I include parent post? TBD later.</p>
+
+<h2>Initial Game Plan</h2>
