@@ -27,28 +27,28 @@
 
 <h2>Views</h2>
 <p>According to the blog by <a href="https://chrisbartos.com/articles/how-i-learned-django-in-3-months/">Chris Bartos</a> I mentioned in yesterdays post, each View is a verb. From my experience, this seems accurate, so now I will break out the app specs into a variety of views:
+<ul>
+  <li>User interaction with account</li>
   <ul>
-    <li>User interaction with account</li>
-    <ul>
-      <li>Sign Up</li>
-      <li>Login</li>
-      <li>Logout (can wait)</li>
-      <li>Delete Account (can wait)</li>
-    </ul>
-    <li>Sort and search</li>
-    <ul>
-      <li>View all posts</li>
-      <li>View posts by user*</li>
-      <li>Search posts**</li>
-    </ul>
-    <li>Logged on user capabilities</li>
-    <ul>
-      <li>Create post</li>
-      <li>Edit post</li>
-      <li>Create comment (can wait)</li>
-      <li>Edit comment (can wait)</li>
-    </ul>
+    <li>Sign Up</li>
+    <li>Login</li>
+    <li>Logout (can wait)</li>
+    <li>Delete Account (can wait)</li>
   </ul>
+  <li>Sort and search</li>
+  <ul>
+    <li>View all posts</li>
+    <li>View posts by user*</li>
+    <li>Search posts**</li>
+  </ul>
+  <li>Logged on user capabilities</li>
+  <ul>
+    <li>Create post</li>
+    <li>Edit post</li>
+    <li>Create comment (can wait)</li>
+    <li>Edit comment (can wait)</li>
+  </ul>
+</ul>
 <p>*I will need to make decisions about how the view will display post and/or comments by user. Just do posts? If I do posts and comments should I include parent post? TBD later.</p>
 
 <h2>Initial Game Plan</h2>

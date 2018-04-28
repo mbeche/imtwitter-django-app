@@ -1,15 +1,37 @@
 <h1>Sprint 2: Create database, model and migrate</h1>
 <em>April 28, 2018 at 11:41am</em>
 
+<p>Sprint 1 went pretty well. It is cool to follow the tutorial and my todo list as a scaffold. Because the tutorial is showing a different project, I get to see the steps but then figure out how I will apply them to my specific application.</p>
+
+<p>The tutorial describes using other DBs but does not explicitly explain how to use PostgesQL. Having used it in the class I was taking, I think that I should be able to figure it out pretty easily.</p>
+
+<p>I'm still a bit iffy on making user signup/login page. At the Python and R group today someone was sharing how challenging that process is in a regular web application, but from what I've ready Django helps streamline that by already having the model in place, you just need to connect it through the view to the template.</p>
+
+<h2>Getting on with sprint 2:</h2>
 <ol>
   <li>Set up Postgres Database</li>
-  <ol>
+  <ol type='a'>
     <li>Open SQL Shell</li>
     <li>Hit enter 4 times to select standard options, then enter password</li>
-    <li>Creat database: <code>CREATE DATABASE IMTwitter;</code> </li>
+    <li>Creat database: <code>CREATE DATABASE imtwitter;</code> </li>
   </ol>
   <li>Change settings.py to use Postgres Database</li>
-  <li>Migrate</li>
+  <ol type='a'>
+    <li>Change DATABASE section:<br>
+      <code>DATABASES = {<br>
+          &nbsp;&nbsp;'default': {<br>
+          &nbsp;&nbsp;'ENGINE': 'django.db.backends.postgresql',<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;'NAME': 'imtwitter',<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;'USER': 'postgres',<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;'PASSWORD': 'django1234',<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;'HOST': '127.0.0.1',<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;'PORT': '5432',<br>
+          &nbsp;&nbsp;}<br>
+      }</code>
+    </li>
+    <li><em>I'm confused because according to gitignore.io I don't need to put settings.py on there - which makes sense since there's lots of necessary info. However, I'm showing to the world my database key. I used a dummy key to make it a non-issue but if I wanted to make this a legit site wouldn't sharing this password to my local DB be an issue?</em></li>
+  </ol>
+  <li>Migrate-<em> I had some issues with the naming of my database having lowercase 'imtwitter' vs 'IMTwitter'. To circumnavigate this issue I created a new branch and renamed all 'IMT' to 'imt' in each file - it appears to be working still so I will merge with the master branch after a few more steps.</em></li>
   <li>Create Models</li>
   <ul>
     <li>Post</li>
@@ -18,6 +40,18 @@
   <li>Insert dotted path for twitter app into settings.py</li>
   <li>Make migrations then migrate</li>
   <li>Learn how the database works - or hold off for later</li>
+  <ol type='a'>
+    <li>I did a little messing around in: <code>python manage.py shell</code> to poke around the tables</li>
+    <li>I created a name for the posts and comments in the models.</li>
+    <li>I created a superuser: admin django1234</li>
+  </ol>
   <li>Make the model modifiable in the admin</li>
-  <hr />
 </ol>
+<hr />
+<p>Alright, so far so good. I double checked on the admin side and the secret ForeignKey has seemed to work to link comments together with posts. It looks like I'll also have to do that with users and posts. It looks like at this point I have a few different paths I could travel down. Let me list them out.</p>
+<h3>Moving Forward</h3>
+<ul>
+  <li>Create templates for the listing of posts and comments</li>
+  <li>Create user singup/login capabilities</li>
+</ul>
+<p>These seem to be the two paths I can take at this time. Because some of the views will require me to filter by user, I may go ahead and start with user signup/login. For this I will need to switch tutorials and will be walking into uncharted territory (e.g. I've reached the extent of my preproject outside of the front end template creation - which I will work on later)</p>
