@@ -32,8 +32,8 @@
     <ul>
       <li>Sign Up</li>
       <li>Login</li>
-      <li>Logout</li>
-      <li>Delete Account</li>
+      <li>Logout (can wait)</li>
+      <li>Delete Account (can wait)</li>
     </ul>
     <li>Sort and search</li>
     <ul>
@@ -45,10 +45,40 @@
     <ul>
       <li>Create post</li>
       <li>Edit post</li>
-      <li>Create comment</li>
-      <li>Edit comment</li>
+      <li>Create comment (can wait)</li>
+      <li>Edit comment (can wait)</li>
     </ul>
   </ul>
 <p>*I will need to make decisions about how the view will display post and/or comments by user. Just do posts? If I do posts and comments should I include parent post? TBD later.</p>
 
 <h2>Initial Game Plan</h2>
+<p>To start with I'm going to create a step by step list of what I need to do to get this up and running, in the relative order that I think I need to do it in.</p>
+<p>For the following, I am going to use <a href="https://docs.djangoproject.com/en/2.0/intro">Django Project</a> documentation to help me out. The following will model loosely off of the tutorials.</p>
+<h3>Sprint 1: Create the project and app.</h3>
+<ol>
+  <li>Create django project</li>
+  <li>Creating app</li>
+  <li>Create View of index page in view.py</li>
+  <li>Create urls.py</li>
+  <li>Create path for index in urls.py</li>
+  <li>Create url for admin in urls.py</li>
+</ol>
+  <hr />
+<h3>Create database, model and migrate</h3>
+<ol>
+  <li>Set up Postgres Database</li>
+  <li>Change settings.py to use Postgres Database</li>
+  <li>Migrate</li>
+  <li>Create Models</li>
+  <ul>
+    <li>Post</li>
+    <li>Comment</li>
+  </ul>
+  <li>Insert dotted path for twitter app into settings.py</li>
+  <li>Make migrations then migrate</li>
+  <li>Learn how the database works - or hold off for later</li>
+  <li>Make the model modifiable in the admin</li>
+  <hr />
+</ol>
+  <h3>Create views for "by user" and "search"</h3>
+  <h3>Create user login capabilities (sounds scary!)</h3>
