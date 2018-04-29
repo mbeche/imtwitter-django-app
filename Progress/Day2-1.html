@@ -1,0 +1,37 @@
+<h1>Day 2 Recap</h1>
+<em>April 29, 2018 at 11:52am</em>
+
+<p>I spent a bit of time this morning reading through the <a href="https://docs.djangoproject.com/en/2.0/topics/forms/">documentation</a> on how Django does forms. It's starting to click a bit more how the forms for login and createaccount were populated with the Djagno code in the HTML files. I think it will take me creating my own form for user post and comments to fully understand the procedure of making a form.</p>
+
+<p>As mentioned in yesterdays recap. I will be working through this <a href="https://www.lynda.com/Django-tutorials/Welcome/594454/600921-4.html?autoplay=true">course on lynda.com</a> specifically about building a social network site with Django. I will continue to take notes on the process.</p>
+
+<h2>Lynda.com <a href="https://www.lynda.com/Django-tutorials/Welcome/594454/600921-4.html?autoplay=true">Building a Social Website</a> </h2>
+<p>With the tutorials it's easier to get an overview and outline the procedure like I did yesterday. With a video course it's harder to scan through and write out the procedure ahead of time. So the outline I write for this will be written as I move along with my notes <em>in italic.</em></p>
+<h4>Video 1: Getting Project Set Up</h4>
+<ol>
+  <li>Create a virtual enviroment</li>
+  <li>Install Django.<br>
+  <ul>
+    <em>Good thing we're making a virtual eviroment because the course uses Django 1.8.2, whereas my IMTwitter project is in 2.0.2. I forgot to ask in the interview what version the team uses.</em>
+  </ul>
+  <li>Start project a project named <code>bookmarks</code> </li>
+  <li>Move into <code>bookmars</code> project and start an app named <code>account</code> (<em>presumably to create the user account creation interface</em>) </li>
+  <li>Go into <code>settings.py</code> and add <code>'account'</code> to <code>INSTALLED_APPS</code> list.</li>
+  <ul>
+    <em>I'm still confused why we use <code></code>'account' instead of <code>'account.apps.accountConfig'</code>, however it looks like there is no <code>apps.py</code> file in the <code>account</code> app directory. Perhaps this is one of the differences between Django 1 and Django 2.</em> </li>
+  </ul>
+  <li>Make initial migrations</li>
+</ol>
+<h4>Video 2: Using Django Authentication Framework</h4>
+<ol>
+  <li>Great explanation about the auto-installed <code>django.contrib.auth</code> and <code>auth.middleware</code></li>
+  <li>The above contains several views (<em>I believe the one I used to create the login page</em>) as well as models:</li>
+  <ol type="a">
+    <li>User: Basic fields, main fields, username, and password</li>
+    <li>Group: Categorizing users (<em>I don't think I'll use this much</em>)</li>
+    <li>Permission: <em>How I will keep registered users from making posts and comments.</em> </li>
+  </ol>
+  <li>This project has us create manual forms: we begin with the login form in a <code>forms.py</code> file under the account app directory. </li>
+</ol>
+
+<p>Today has been a short day - tutoring, Magic the Gathering, and family dinner - I suppose it is Sunday after all! Looking forward to continuing with this project tomorrow.</p>
