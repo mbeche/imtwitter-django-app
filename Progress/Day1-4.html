@@ -14,15 +14,19 @@
   <li>No need to install anything <code>'django.contrib.auth'</code> is automatically included in the <code>INSTALLED_APPS</code> under settings.py</li>
   <li>Create <code>urlpatterns</code> with <code>'django.contrib.auth.url'</code> for accounts URL. This contains quite a few <a href="https://docs.djangoproject.com/en/2.0/topics/auth/default/#module-django.contrib.auth.views"> Authentication Views</a> <br>
   </li>
+  <em>I discover after writing out the following steps that the tutorial uses a project without an app, whereas my project has an app. A comment suggests we should create the templates and URLs within the main project folder, not the app folder. I will stick with that for now.</em>
   <li>Create a login page</li>
   <ol type='a'>
     <li>Django by default looks in 'templates/registration/' for auth templates</li>
     <li>Create 'login.html' file in this template directory</li>
     <li>Enter html code into this file</li>
     <li>The code contains a form element with a method attribut of "post", as well as <code>{$ csrf_token %}</code> and <code>{{ form.as_p}}</code> and a login button. I understand that the former helps mitigate security risks and the latter wraps each input in a paragraph, however I don't understand where the from content comes from. The code somehow knows to supply the 'login' and 'password' fields. Maybe it will click once I actually implement it on my site. </li>
+    <li> <em>My best guess is that Django must know login.html corresponds to the 'login' view </em> </li>
   </ol>
   <li>Update 'settings.py' to have Django look for templates within the imtwitter directory</li>
-  <li>Set <code>LOGIN_REDIRECT_URL = '/'</code> to set the login reditect to the homepage</li>
+  <li>Set <code>LOGIN_REDIRECT_URL = '/'</code> to set the login reditect to the homepage <br>
+  <em> <strong>It worked! :D</strong><br> I had trouble because for some reason my project is an extra folder so I had to change the DIRS from 'templates' to 'imtwitter/templates'. Thanks to the debugging tools and checking my local directory it was pretty easy to figure out.</em>
+  </li>
   <li>Create more superusers to try logging in (I should be able to log in with my current superuser account)</li>
   <li>Create template for homepage in the templates directory (<em>The tutorial directs to create home.html and base.html. I'm not completely certain why this is the case but I think it should make sense as I complete the tutorial. I currently don't have any templates, I am using <code>HttpResponse</code> to put some text on my home page.</em>)</li>
   <li>Import TemplateView on URL pattern (<em>Whaaa...?</em>)</li>
