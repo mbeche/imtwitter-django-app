@@ -7,6 +7,7 @@
 
 <h2>Lynda.com <a href="https://www.lynda.com/Django-tutorials/Welcome/594454/600921-4.html?autoplay=true">Building a Social Website</a> </h2>
 <p>With the tutorials it's easier to get an overview and outline the procedure like I did yesterday. With a video course it's harder to scan through and write out the procedure ahead of time. So the outline I write for this will be written as I move along with my notes <em>in italic.</em></p>
+<p>Note: You can find the side-project outlined below at this <a href="https://github.com/mbeche/bookmarks_lynda_course">GitHub Repository</a> </p>
 <h4>Video 1: Getting Project Set Up</h4>
 <ol>
   <li>Create a virtual enviroment</li>
@@ -27,11 +28,51 @@
   <li>Great explanation about the auto-installed <code>django.contrib.auth</code> and <code>auth.middleware</code></li>
   <li>The above contains several views (<em>I believe the one I used to create the login page</em>) as well as models:</li>
   <ol type="a">
-    <li>User: Basic fields, main fields, username, and password</li>
+    <li>User: Contains basic fields (name, email, etc), username, and password</li>
     <li>Group: Categorizing users (<em>I don't think I'll use this much</em>)</li>
     <li>Permission: <em>How I will keep registered users from making posts and comments.</em> </li>
   </ol>
+  <li>The purpose of the Log-In View we will create:</li>
+  <ol type="a">
+    <li>Get username and password</li>
+    <li>Authenticate the user data in the database</li>
+    <li>Check if the user is active</li>
+    <li>Log the user into the website</li>
+  </ol>
   <li>This project has us create manual forms: we begin with the login form in a <code>forms.py</code> file under the account app directory. </li>
+  <li>Edit <code>views.py</code> file in the account directory to add <code>user_login</code> view. This view has several if/else statements that does one thing or another depending on where the user login credentials are valid, or whether the user credentials are authenticated (<em>Sounds like a bit of overkill for my purpose, but I can see the benefit</em>).</li>
+  <li>Create a URL view for this in the account directory.</li>
+  <ol>
+    <em>Came across another difference between Django 1 and Django 2: url routing syntax. We use <code>r'^login/$'</code> in Django 1 but it's a more intuitive <code>'login/'</code>in Django 2. Not sure of the original syntax but I like the new version better.</em>
+  </ol>
+  <li>Create urlpatterns in the main bookmarks project to include the URLs from the account app.</li>
+  <li>Create a templates view, starting with a <code>base.html</code> template in <code>bookmarks/account/templates/</code> and then create a <code>login.html</code> template in <code>bookmarks/account/templates/account/</code> </li>
+  <li>Notes on creating html files:</li>
+  <em><ol type="a">
+    <li>We used the similar block fillin template extension ideas from the original tutorial I followed on my main project.</li>
+    <li>This course has us {% load staticfiles %} for using a css file. I'm glad for this because I didn't get to practice loading static files in the tutorials.</li>
+    <li>This course has use create a common header in our base file to be used in all html extension templates. I can see this being a valid choice for content you want to be the same on every page on your site.</li>
+    <li>The <code>login.html</code> code doesn't contain any recognizable reference to the login form we created - I will just need to continue reading the documentation I mentioned at the beginning of this post to figure that out.</li>
+  </ol></em>
+  <li>Create a superuser to test login page. (admin, admin@bookmarks.edu, django1234)</li>
+  <li>I loaded up the server and created a user in the admin interface (after fixing a few typos) ('Apples123' / pw: 'tastesgood')</li>
+  <li>This course didn't show how to actually load the static files, but it did provide the CSS. So I downloaded the CSS and looked up in documentation how to load the static file path</li>
+  <li>Woot, login interface successful! Next to create logout. While we created this view from scratch, the course talks about how these views and more (like password change and reset) are provided by Django.</li>
+  <ol>
+    <em>The course recommends using this <a href="https://docs.djangoproject.com/en/2.0/topics/auth/default/">piece of documentation</a> to help understand the provided authentication views from Django. </em>
+  </ol>
+  <li>Adding <code>urlpatterns</code> for login, logout, and logout-then-login. Commenting out the views we made for login. </li>
+  <li>Just like before, we setup a <code>registration</code> folder in the templates directory for the standard views for authentication </li>
+  <li>This time when creating the <code>login.html</code> we created the form with the attribute <code>action="{% url "login" %}"</code>, connecting it to the standard login form. <strong>Why didn't we do this in the other tutorial?</strong> This makes sense, but how I did it in my main project does not.. </li>
+  <li>After creating login and logout html files we are creating a new dashboard view for when the user successfully logs in (<em>First time using a <code>@</code> command in Django. It appears to send the user onto another html page after successful login.</em>)</li>
+  <li>To create this dashboard, we need to:</li>
+  <ol type="a">
+    <li>Create a template HTML in <code>bookmarks/account/template/account</code></li>
+    <li>Create a urlpattern</li>
+    <li>Create url locations for <code>LOGIN_REDIRECT</code>, <code>LOGIN</code>, and <code>LOGOUT</code> in the main <code>settings.py</code> file. </li>
+    <li>I have seen an explanation for why to use reverse_lazy to create the url instead of just reverse, but it hasn't clicked yet</li>
+  </ol>
+  <li>We now will make login and logout links to the template.</li>
+  <li>Everything is working well except when I click logout it brings it to the generic Django logged out page: <em>"Thanks for spending some quality time with the Web site today."</em>, rather than the <em>"You have been successfully logged out. You can log-in again"</em> I specified in my <code>logged_out.html</code> file. I can't figure out why. It's not the worst problem but it's a bit frustrating! All my trouble-shooting, checking the documentation provided in the course, I can't see what's wrong.</li>
 </ol>
-
-<p>Today has been a short day - tutoring, Magic the Gathering, and family dinner - I suppose it is Sunday after all! Looking forward to continuing with this project tomorrow.</p>
+<p>This was an interesting learning process. I feel like I understand a bit better how to go about making the user athentication flow in Django. However, it looks like this course goes forward in making a bookmark and image sharing app. This is not the intent with my project so I will likely switch routes tomorrow when I hit back on the trail to figure out how to setup my templates and models for posts and comments.</p>
