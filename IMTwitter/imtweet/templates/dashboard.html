@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+  <p>Welcome to your dashboard.</p>
+
+  <p>Here are some posts:</p>
+  {% for post in posts %}
+  <p>{{ post.user }}</p>
+  <p>{{ post.post_text }}</p>
+    <!-- {% for comment in comments %}
+    <p>Here are the comments:</p>
+    <p>{{ comment.comment_text }}</p>
+    {% endfor %} -->
+  {% endfor %}
+  <!-- <a href="{{ job.link }}">
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top" src="{{ job.image.url }}" />
+        <div class="card-body">
+          <p class="card-text">{{ job.summary }}</p>
+        </div>
+        <small class="text-muted">9 mins</small>
+      </div>
+    </div>
+  </a> -->
+{% endblock %}

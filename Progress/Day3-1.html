@@ -14,10 +14,23 @@
 <h2>Sprint 5: Create the models, templates and views for posts and comments</h2>
 <ol>
   <li>Connect posts and comments to user in model with ForeignKey</li>
-  <ol>
+  <ol type="a">
     <li>To create a ForeignKey for the user in the model I need to put argument <code>on_delete</code> to <code>CASCADE</code> so that (<em>I believe</em>) the post gets deleted when the user gets deleted. I could use another parameter like <code>SET_NULL</code> or <code>SET_DEFAULT</code> to keep the post if the user is deleted, but I think it's fine with cascade. </li>
     <li>I set the default value for the ForeignKey to 1, which should be my superuser</li>
   </ol>
   <em>Wow, that was a lot easier than I expected, now I have to create some templates, URLs and views to diplay the posts and comments in a coherent fasion</em>
-  <li></li>
+  <li>Create a dashboard that users can go to to access the posts of all users (and eventually post new posts/comment).</li>
+  <li>Add to the dashboard template the posts:</li>
+  <ol type="a">
+      <li>I went to the views command and added the following:</li>
+      <ol type="i">
+        <li>At the top of the page: <code>from .models import Post</code> and <code>
+        from .models import Comment</code> to import the posts and comments from my database.</li>
+        <li>Within the dashboard request function <code>posts = Post.objects</code> and <code>
+        comments = Comment.objects</code> to load the posts and comments into the dashboard.</li>
+        <li>Within the <code>dashboard.html</code> I added a loop:<code>  {% for post in posts.all %} Here are some posts: {{ post.post_text }} {% endfor %} </code> </li>
+      </ol>
+  </ol>
+  <li>This did not work. There's something wrong with the way I'm trying to get the data from the database and the rendering of the dashboard. I'm trying to dig into posts and documentation to figure this out but I'm not coming up with much. I might have to dig deeper into some of the classes I've stepped away from.</li>
+  <li>It looks like I needed to add the <code>.all()</code> command to the end of the data I was trying to pull from the database. Thinking about loading comments if a post has a comment will be a more complex task, I think I should move forward with just posts for now.</li>
 </ol>

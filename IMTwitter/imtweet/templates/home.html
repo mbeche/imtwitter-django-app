@@ -6,7 +6,8 @@
 
   {% if user.is_authenticated %}
 <div class="mx-auto border p-10" style="width: 50%;">
-  Hi {{ user.username }}!
+  <p>Hi {{ user.username }}!</p>
+  <p>Go to your <a href="{% url 'dashboard' %}">dashboard</a></p>
   <p><a href="{% url 'logout' %}">Logout</a></p>
 </div>
 {% else %}
