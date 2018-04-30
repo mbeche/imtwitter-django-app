@@ -1,0 +1,23 @@
+<h1>Day 3: Elaborating the Model</h1>
+<em>April 30, 2018 at 3:45pm</em>
+
+<p>After spending time yesterday working through part of that project on Lynda, I've decided to move back to my primary project to see if I can work my way through including users in my model. Becuase I'm moving into uncharted teritory for myself, I will be doing more code exploration and less blogging - so my updates might get fewer in between.</p>
+
+<h3>
+  <p>Working on Today:</p>
+  <ul>
+    <li>Sprint 5: Create the models, templates and views for posts and comments</li>
+    <li>Sprint 6: Use CSS to make things look nice</li>
+  </ul>
+</h3>
+
+<h2>Sprint 5: Create the models, templates and views for posts and comments</h2>
+<ol>
+  <li>Connect posts and comments to user in model with ForeignKey</li>
+  <ol>
+    <li>To create a ForeignKey for the user in the model I need to put argument <code>on_delete</code> to <code>CASCADE</code> so that (<em>I believe</em>) the post gets deleted when the user gets deleted. I could use another parameter like <code>SET_NULL</code> or <code>SET_DEFAULT</code> to keep the post if the user is deleted, but I think it's fine with cascade. </li>
+    <li>I set the default value for the ForeignKey to 1, which should be my superuser</li>
+  </ol>
+  <em>Wow, that was a lot easier than I expected, now I have to create some templates, URLs and views to diplay the posts and comments in a coherent fasion</em>
+  <li></li>
+</ol>
