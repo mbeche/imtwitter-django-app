@@ -36,3 +36,17 @@ def add_comment_to_post(request, pk):
     else:
         form = CommentForm()
     return render(request, 'add_comment_to_post.html', {'form': form})
+
+@login_required
+def add_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.pud_date = timezone.now()
+            post.user = request.user
+            post.save()
+            return redirect('dashboard')
+    else:
+        form = PostForm()
+    return render(request, 'add_post.html', {'form': form})

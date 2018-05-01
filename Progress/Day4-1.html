@@ -1,0 +1,24 @@
+<h1>Day 4: Extending forms to posts and increasing functionality</h1>
+<em>May 1, 2018 at 2:53pm</em>
+
+<p>Yesterday was an exciting day. I was able to use some advanced tutorials to figure out how to make a form to comment on posts. It had it's challenges since our models weren't completely the same and the tutorial used an old version of Django, however I enjoyed the challenge. Today I will create a form for creating new posts. Then I will work towards editing and deleting posts. </p>
+<h3>
+  <p>Breakdown of future work:</p>
+  <ul>
+    <li>Sprint 5b: Add the capability to make a new post to the social media website.</li>
+    <li>Sprint 6: Use CSS to make things look nice</li>
+    <li>Sprint 7: Go back and fill in some capabilities that I should add in: deleting a post, editing a post, etc</li>
+  </ul>
+</h3>
+
+<h2>Sprint 5b: Add the capability to make a new post to the social media website.</h2>
+<p>I've already done it for the comments, now I just need to repeat the process for the comment. I'll write out my workflow below and then tackle the rest of this sprint! I'll have to go back to the <a href="https://tutorial-extensions.djangogirls.org/en/homework_create_more_models/">original document</a> I was following because I did not take good notes on it while I was doing the experimental process yesterday.</p>
+<ol>
+  <li>In <code>forms.py</code> create a <code>PostForm</code> with class meta that relates it to the Post model and had an input of <code>post_text</code>. Make sure to import with <code>import .models Post</code> (I already imported when I imported comment model yesterday) </li>
+  <li>Add a line at the top of the <code>dashboard.html</code> for creating new posts</li>
+  <li>Create a URLconf for creating post: <code>path('addpost/', views.add_post, name='add_post'</code> </li>
+  <li>Create a view that contains the form (may take some trial and error to get right). Make sure to import the correct forms and have the form automatically loads the user and the date/time published</li>
+  <li>create an <code>add_post.html</code> in templates </li>
+  <li> <strong>Yahoo!</strong> Worked on the first try :D Great feelings. <strong>Sprint 5 complete.</strong> </li>
+
+</ol>

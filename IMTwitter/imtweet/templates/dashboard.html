@@ -7,19 +7,19 @@
 
   <h1>Dashboard</h1>
   <p>Welcome to your dashboard.</p>
+  <a href="{% url 'add_post' %}" style="height: 150px;"><button class="w-50 h-100 center btn-lg btn-primary" style="font-size: 50px;">Create Post</button></a>
   <p>Most recent posts:</p>
   <div class="row justify-content-center">
-    <div class="card p-0 m-3" style="width: 80%;">
+    <div class="card p-0 m-3" style="width: 80%; background-color:#f0f2f4;">
   {% for post in posts %}
       <div class="card-body">
         <h5 class="card-title">Posted by <strong>{{ post.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ post.pud_date }}</span></h5>
         <p class="card-text">{{ post.post_text }}</p>
       </div>
-
       <div class="row justify-content-center">
-      <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+        <a href="{% url 'add_comment_to_post' pk=post.pk %}"><button class="center btn btn-primary">Add comment</button></a>
       {% for comment in post.comment_set.all %}
-        <div class="card p-0 m-3" style="width: 80%;">
+        <div class="card p-0 m-3" style="width: 80%; background-color:#F8F9FA;">
           <div class="card-body">
             <h5 class="card-title">Reply by <strong>{{ comment.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ comment.pub_date }}</span></h5>
             <p class="card-text">{{ comment.comment_text }}</p>
@@ -33,7 +33,7 @@
   <div class="pl-5 pr-5 pb-5 pt-0">
     <div class="p-0 .text-nowrap" style="white-space: nowrap;">
       <div class="d.inline-block w-25 float-left">
-        <img class="img-fluid d.inline-block p-0" src="{% static "rainbow-left.png" %}" alt="raindow">
+        <img class="img-fluid d.inline-block p-0" style="transform: scaleX(-1)" src="{% static "rainbow-right.png" %}" alt="raindow">
       </div>
       <div class="float-left text-center w-50 p-0" style="white-space: normal;"><br>¯\_(ツ)_/¯<br><br>End of post list - I'm going to go lie down in the sun with my friend billy.</div>
       <div class="d.inline-block w-25 p-0 float-right">
