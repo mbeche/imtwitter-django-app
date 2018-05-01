@@ -17,6 +17,7 @@
       </div>
 
       <div class="row justify-content-center">
+      <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
       {% for comment in post.comment_set.all %}
         <div class="card p-0 m-3" style="width: 80%;">
           <div class="card-body">
@@ -25,6 +26,7 @@
           </div>
         </div>
       {% endfor %}
+
     </div>
     <hr>
   {% endfor %}

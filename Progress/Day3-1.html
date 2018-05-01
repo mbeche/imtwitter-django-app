@@ -40,5 +40,9 @@
     <li>Dashboard.html contains: <code>{% for comment in post.comment_set.all %}</code></li>
   </ol>
   I'm not certain yet how "comment_set" works and why I put the <code>all()</code> in the view but drop the parenthesis for the template with <code>all</code>.
-  <li></li>
+  <li>Did some styling on the dashboard.</li>
+  <li>Creating <code>forms.py</code> file in <code>imtweet</code> to allow users to leave posts or comments. </li>
+  <li>I used this <code><a href="https://tutorial-extensions.djangogirls.org/en/homework_create_more_models/"></a>Django Girls Advanced Tutorial</code> to help me piece through making a form to create a comment. It took a while because I had to back track through her normal tutorial to check out the model she created. I also had to import some shortcut functions like <code>get_object_or_404()</code> and <code>redirect()</code>, as well as change some values - like the redirect back to the dashboard.</li>
+  <li>I really would like it if I could have forms inline and then the page automatically update with comments, but this would involve more complex form work and the use of AJAX. I will try to add this in once I get all the other components set up.</li>
+  <li>One issue that remains is that there is a dropdown menu for the user. This means anyone can claim to comment as any other user. I am thinking of a workaround but I need a way to get the current username with Django - maybe there's a built in function for that.</li>
 </ol>
