@@ -1,28 +1,46 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
+<div class="p-3">
+
   <h1>Dashboard</h1>
   <p>Welcome to your dashboard.</p>
-
-  <p>Here are some posts:</p>
+  <p>Most recent posts:</p>
+  <div class="row justify-content-center">
+    <div class="card p-0 m-3" style="width: 80%;">
   {% for post in posts %}
-  <p>{{ post.user }}</p>
-  <p>{{ post.post_text }}</p>
-    <!-- {% for comment in comments %}
-    <p>Here are the comments:</p>
-    <p>{{ comment.comment_text }}</p>
-    {% endfor %} -->
-  {% endfor %}
-  <!-- <a href="{{ job.link }}">
-    <div class="col-md-4">
-      <div class="card mb-4 box-shadow">
-        <img class="card-img-top" src="{{ job.image.url }}" />
-        <div class="card-body">
-          <p class="card-text">{{ job.summary }}</p>
+      <div class="card-body">
+        <h5 class="card-title">Posted by <strong>{{ post.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ post.pud_date }}</span></h5>
+        <p class="card-text">{{ post.post_text }}</p>
+      </div>
+
+      <div class="row justify-content-center">
+      {% for comment in post.comment_set.all %}
+        <div class="card p-0 m-3" style="width: 80%;">
+          <div class="card-body">
+            <h5 class="card-title">Posted by <strong>{{ comment.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ comment.pub_date }}</span></h5>
+            <p class="card-text">{{ comment.comment_text }}</p>
+          </div>
         </div>
-        <small class="text-muted">9 mins</small>
+      {% endfor %}
+    </div>
+    <hr>
+  {% endfor %}
+  <div class="pl-5 pr-5 pb-5 pt-0">
+    <div class="p-0 .text-nowrap" style="white-space: nowrap;">
+      <div class="d.inline-block w-25 float-left">
+        <img class="img-fluid d.inline-block p-0" src="{% static "rainbow-left.png" %}" alt="raindow">
+      </div>
+      <div class="float-left text-center w-50 p-0" style="white-space: normal;"><br>¯\_(ツ)_/¯<br><br>End of post list - I'm going to go lie down in the sun with my friend billy.</div>
+      <div class="d.inline-block w-25 p-0 float-right">
+        <img class="img-fluid d.inline-block p-0" src="{% static "rainbow-right.png" %}" alt="raindow">
       </div>
     </div>
-  </a> -->
+    <img class="img-fluid border border-success rounded" src="{% static "goat.jpg" %}" alt="billy the goat">
+  </div>
+    </div>
+  </div>
 {% endblock %}
+</div>

@@ -10,7 +10,7 @@ from .models import Comment
 
 @login_required
 def dashboard(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-pud_date')
     comments = Comment.objects.all()
     return render(request, 'dashboard.html', {'section': 'dashboard', 'posts':posts, 'comments':comments})
 

@@ -33,4 +33,12 @@
   </ol>
   <li>This did not work. There's something wrong with the way I'm trying to get the data from the database and the rendering of the dashboard. I'm trying to dig into posts and documentation to figure this out but I'm not coming up with much. I might have to dig deeper into some of the classes I've stepped away from.</li>
   <li>It looks like I needed to add the <code>.all()</code> command to the end of the data I was trying to pull from the database. Thinking about loading comments if a post has a comment will be a more complex task, I think I should move forward with just posts for now.</li>
+  <li>I couldn't give up on getting comments to work so I figured out <code>prefetch_related</code> could work. However currently I'm loading every comment on each post, not just comments related to that post.</li>
+  <li>After another hour or so of poking around and searching through documentation and posts, I found a solution:</li>
+  <ol type="a">
+    <li>Views was left with the original <code>comments = Comment.objects.all()</code> dashboard request function</li>
+    <li>Dashboard.html contains: <code>{% for comment in post.comment_set.all %}</code></li>
+  </ol>
+  I'm not certain yet how "comment_set" works and why I put the <code>all()</code> in the view but drop the parenthesis for the template with <code>all</code>.
+  <li></li>
 </ol>
