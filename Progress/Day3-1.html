@@ -42,7 +42,20 @@
   I'm not certain yet how "comment_set" works and why I put the <code>all()</code> in the view but drop the parenthesis for the template with <code>all</code>.
   <li>Did some styling on the dashboard.</li>
   <li>Creating <code>forms.py</code> file in <code>imtweet</code> to allow users to leave posts or comments. </li>
-  <li>I used this <code><a href="https://tutorial-extensions.djangogirls.org/en/homework_create_more_models/"></a>Django Girls Advanced Tutorial</code> to help me piece through making a form to create a comment. It took a while because I had to back track through her normal tutorial to check out the model she created. I also had to import some shortcut functions like <code>get_object_or_404()</code> and <code>redirect()</code>, as well as change some values - like the redirect back to the dashboard.</li>
+  <li>I used this <code><a href="https://tutorial-extensions.djangogirls.org/en/homework_create_more_models/"></a>Django Girls Advanced Tutorial</code> to help me piece through making a form to create a comment. It took a while because I had to back track through her normal tutorial to check out the model she created. I also had to import some shortcut functions like <code>get_object_or_404()</code> and <code>redirect()</code>, as well as change some values - like the redirect back to the dashboard. I had to load a regular expression path for the comment link.</li>
   <li>I really would like it if I could have forms inline and then the page automatically update with comments, but this would involve more complex form work and the use of AJAX. I will try to add this in once I get all the other components set up.</li>
   <li>One issue that remains is that there is a dropdown menu for the user. This means anyone can claim to comment as any other user. I am thinking of a workaround but I need a way to get the current username with Django - maybe there's a built in function for that.</li>
+  <li>Yes, I was able to solve that the same way I had the submission html for a comment complete the pub_date field in the model. Now it automatically detects whoever is logged in.</li>
 </ol>
+
+<p>I'm pushing into uncharted territory with this project but I sure am enjoying it. It's fun using a bunch of resources to figure out how to move forward with your project. I know after I'm done with this project I will still use courses and tutorials to learn things, but this is helping me become more confident in my ability to just figure things out on my own.</p>
+
+<h3>
+  <p>Work for Another Day:</p>
+  <ul>
+    <li>Sprint 5a: <em>Partially</em> Create the models, templates and views for posts and comments</li>
+    <li>Sprint 5b: Add a form and the capability to make a new post to the social media website.</li>
+    <li>Sprint 6: Use CSS to make things look nice</li>
+    <li>Sprint 7: Go back and fill in some capabilities that I should add in: deleting a post, editing a post, etc</li>
+  </ul>
+</h3>

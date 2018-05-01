@@ -21,7 +21,7 @@
       {% for comment in post.comment_set.all %}
         <div class="card p-0 m-3" style="width: 80%;">
           <div class="card-body">
-            <h5 class="card-title">Posted by <strong>{{ comment.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ comment.pub_date }}</span></h5>
+            <h5 class="card-title">Reply by <strong>{{ comment.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ comment.pub_date }}</span></h5>
             <p class="card-text">{{ comment.comment_text }}</p>
           </div>
         </div>

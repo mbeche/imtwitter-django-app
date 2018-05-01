@@ -18,9 +18,10 @@ def dashboard(request):
     comments = Comment.objects.all().order_by('-pud_date')
     return render(request, 'dashboard.html', {'section': 'dashboard', 'posts':posts, 'comments':comments})
 
-def post_list(request):
-    return render(request, 'post_list.html', {})
+# def post_list(request):
+#     return render(request, 'post_list.html', {})
 
+@login_required
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -28,6 +29,7 @@ def add_comment_to_post(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.pub_date = timezone.now()
+            comment.user = request.user
             comment.post = post
             comment.save()
             return redirect('dashboard')
