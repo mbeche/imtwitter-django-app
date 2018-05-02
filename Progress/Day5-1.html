@@ -37,6 +37,7 @@
   </ul>
 </h3>
 
+<p>Side note: I figured out how to get the post that the commenter is posting on onto the comment page. Post was already save with the <code>get_object_or_404</code> function, I just needed to load in on the template with <code>{{ post }}</code>.</p>
 <h2>Sprint 6: Use CSS to make things look nice</h2>
 <ol>
   <li>Center the "new post" and "new comment" dialogue box</li>
@@ -52,5 +53,19 @@
     <li>Contact info for me</li>
   </ol>
 </ol>
+
+<h2>Sprint 7: Allow users to delete & edit posts they have created</h2>
+<p>To help me with this I'm following help from this <a href="http://www.mastercode.online/tutorials/language/tutorial_series/tutorial/how-to-django-blog-application-how-to-edit-post-in-django/">tutorial.</a></p>
+<ol>
+  <li>Create new view for editing post that takes</li>
+  <li>Instruct the view to use the same <code>add_post.html</code> to edit post in </li>
+  <li>use <code>post = get_object_or_404(Post, pk)</code> shortcut function again to load post and complete view</li>
+  <li>Add URLconf for editing the post using a re_path to use regex</li>
+  <li>Update template to change a few things depending on whether we are making a new post or editing</li>
+  <li><strong>Succsess:</strong> Getting the capability to edit a post</li>
+  <li><strong>Needs Work:</strong> Restricting access to editing post to only the user that created the post. Getting same capbility to edit comments (I'm having trouble differentiating between the post pk and the comment pk when calling the edit_comment function in a similar way - I may need to dumb it down for the edit.)</li>
+
+</ol>
+
 
 <p>Alright, we've got some work to do!</p>

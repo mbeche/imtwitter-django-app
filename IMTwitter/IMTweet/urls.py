@@ -5,8 +5,8 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('dashboard/', views.dashboard , name='dashboard'),
+    path('addpost/', views.add_post, name='add_post'),
     re_path(r'^post_comment_on_(?P<pk>\d+)/?', views.add_comment_to_post , name='add_comment_to_post'),
-    path('addpost/', views.add_post, name='add_post')
-    # path('dashboard/', views.post_list , name='post_list'),
-    # path('', views.index, name='index'),
+    re_path(r'^edit-post/(?P<pk>\d+)/$', views.edit_post, name='edit_post'),
+    # re_path(r'^edit-comment/(?P<pk>\d+)/$', views.edit_comment, name='edit_comment'),
 ]
