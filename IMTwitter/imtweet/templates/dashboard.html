@@ -45,7 +45,7 @@
             {% if comment.user == request.user %}
             <div class="clearfix pb-3 text-right">
               <span class="font-italic text-muted">As the poster you may:</span>
-              <a href="{% url 'edit_post' pk=post.pk %}"><button class="btn btn-success ml-3 mb-2">Edit post</button></a>
+              <!-- <a href="{% url 'edit_post' pk=post.pk %}"><button class="btn btn-success ml-3 mb-2">Edit post</button></a> -->
               <a href="{% url 'delete_comment' pk=comment.pk %}"><button class="btn btn-danger ml-3 mb-2">Delete Comment</button></a>
             </div>
             {% endif %}

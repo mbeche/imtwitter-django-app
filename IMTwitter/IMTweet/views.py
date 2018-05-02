@@ -45,9 +45,9 @@ def add_comment_to_post(request, pk):
             comment.post = post
             comment.save()
             return redirect('dashboard')
-        else:
-            form = CommentForm()
-        return render(request, 'add_comment_to_post.html', {'form': form, 'post':post})
+    else:
+        form = CommentForm()
+    return render(request, 'add_comment_to_post.html', {'form': form, 'post':post})
 
 def user_author_check(author, user):
     return author == user
@@ -88,10 +88,10 @@ def delete_comment(request, pk):
     if user_author_check(comment.user, request.user):
         if request.method == "POST":
             form = CommentForm(request.POST, instance=comment)
-            post.delete()
+            comment.delete()
             return redirect('dashboard')
         else:
-            form = PostForm(instance=comment)
+            form = CommentForm(instance=comment)
         return render(request, 'add_comment_to_post.html', {'form': form, 'comment': comment})
     else:
         return HttpResponse("You do not have permission to delete this post.")
