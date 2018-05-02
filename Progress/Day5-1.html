@@ -64,8 +64,15 @@
   <li>Update template to change a few things depending on whether we are making a new post or editing</li>
   <li><strong>Succsess:</strong> Getting the capability to edit a post</li>
   <li><strong>Needs Work:</strong> Restricting access to editing post to only the user that created the post. Getting same capbility to edit comments (I'm having trouble differentiating between the post pk and the comment pk when calling the edit_comment function in a similar way - I may need to dumb it down for the edit.)</li>
-
+  <li><strong>Update:</strong> Only posts that the current user has written can see/click the edit button. If another user tries to edit a post they are not the author of they cget an error message.</li>
 </ol>
-
+<h3>Repeat the process of editing a post to delete a post:</h3>
+<ol>
+  <li>Create a view for deleting post similar to edit post except instead of calling <code>form.save()</code> we will call <code>post.delete()</code> </li>
+  <li>Add URLconf for this new view</li>
+  <li>Edit <code>add_post.html</code> with an if statement to display "delete post" when accessed with this view/URLconf </li>
+  <li>Change <code>add_post.html</code> template so that delete warns the user of what they are doing.</li>
+  <li>Add new button for deleting a post</li>
+</ol>
 
 <p>Alright, we've got some work to do!</p>

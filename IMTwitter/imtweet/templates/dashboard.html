@@ -25,12 +25,18 @@
     <div class="card p-0 m-3" style="width: 80%; background-color:#f0f2f4;">
   {% for post in posts %}
       <div class="card-body">
+        {% if post.user == request.user %}
+        <div class="clearfix pb-3 text-right">
+          <span class="font-italic text-muted">As the poster you may:</span>
+          <a href="{% url 'edit_post' pk=post.pk %}"><button class="btn btn-success ml-3 mb-2">Edit post</button></a>
+          <a href="{% url 'delete_post' pk=post.pk %}"><button class="btn btn-danger ml-3 mb-2">Delete post</button></a>
+        </div>
+        {% endif %}
         <h5 class="card-title">Posted by <strong>{{ post.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ post.pud_date }}</span></h5>
         <p class="card-text">{{ post.post_text }}</p>
       </div>
       <div class="row justify-content-center">
         <a href="{% url 'add_comment_to_post' pk=post.pk %}"><button class="center btn btn-primary" style="background-color:#1F7A8C;">Add comment</button></a>
-        <a href="{% url 'edit_post' pk=post.pk %}"><button class="center btn btn-primary" style="background-color:#1F7A8C;">Edit post</button></a>
       </div>
       <div class="row justify-content-center">
       {% for comment in post.comment_set.all %}
