@@ -4,12 +4,24 @@
 
 {% block content %}
 <div class="p-3">
-
-  <h1>Dashboard</h1>
-  <p>Welcome to your dashboard.</p>
-  <a href="{% url 'add_post' %}" style="height: 150px;"><button class="w-50 h-100 center btn-lg btn-primary" style="font-size: 50px;">Create Post</button></a>
-  <p>Most recent posts:</p>
+  <div class="jumbotron pt-2 pb-2" style="background-color: #f0f2f4">
+    <h1 class="display-4">Welcome to your Dashboard, {{ user }}!</h1>
+    <p class="lead">We tried to make functions on this site self explanatory - give it a spin!</p>
+    <hr class="my-2">
+    <ul>
+          <i class="fas fa-comments"></i><span class="pl-1">New to IMTwitter? Create a post to say hello!</span><br>
+          <i class="fas fa-paw"></i><span class="pl-1">Have a cute animal pic that needs to be shared? We're happy to have it.</span><br>
+          <i class="fas fa-reply"></i><span class="pl-1">Come up with a funny (or serious) retort to a previous post? Give 'em a comment!</span><br>
+          <i class="fas fa-question-circle"></i><span class="pl-1">Need help or want to know more about how this app was developed? See "About" in the menu above</span><br>
+    </ul>
+    <p class="lead"><em>The IMTwitter world is your oyster!</em></p>
+  </div>
+<p>
+  <a href="{% url 'add_post' %}" class="row justify-content-center" style="text-decoration: none;"><button class="center text-white btn-lg btn-primary" style="font-size: 50px; background-color:#1F7A8C; height: 150px; width: 380px;">Create Post</button></a>
   <div class="row justify-content-center">
+    <div style="width: 80%;">
+      <h3>Most recent posts:</h3>
+    </div>
     <div class="card p-0 m-3" style="width: 80%; background-color:#f0f2f4;">
   {% for post in posts %}
       <div class="card-body">
@@ -17,7 +29,9 @@
         <p class="card-text">{{ post.post_text }}</p>
       </div>
       <div class="row justify-content-center">
-        <a href="{% url 'add_comment_to_post' pk=post.pk %}"><button class="center btn btn-primary">Add comment</button></a>
+        <a href="{% url 'add_comment_to_post' pk=post.pk %}"><button class="center btn btn-primary" style="background-color:#1F7A8C;">Add comment</button></a>
+      </div>
+      <div class="row justify-content-center">
       {% for comment in post.comment_set.all %}
         <div class="card p-0 m-3" style="width: 80%; background-color:#F8F9FA;">
           <div class="card-body">

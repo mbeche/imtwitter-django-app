@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>New Post</h1>
+<div class="p-3">
+  <div class="jumbotron pt-2 pb-2" style="background-color: #f0f2f4">
+    <h1 class="display-4">we're all ears!</h1>
+    <p class="lead"><strong>{{ user }}, what would you like to share?</strong></p>
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Send</button>
-    </form>
+      <span class="text-black-50"><em>Character Limit: 140</em></span>
+      {{ form.as_p }}
+      <button type="submit" class="save btn btn-default text-white"  style="background-color:#1F7A8C;">Send</button>
+    </form><br>
+    <p class="lead"><em>The IMTwitter world is your oyster!</em></p>
+  </div>
+</div>
 {% endblock %}

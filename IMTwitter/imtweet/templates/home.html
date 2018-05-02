@@ -5,17 +5,20 @@
 {% block content %}
 
   {% if user.is_authenticated %}
-<div class="mx-auto border p-10" style="width: 50%;">
-  <p>Hi {{ user.username }}!</p>
-  <p>Go to your <a href="{% url 'dashboard' %}">dashboard</a></p>
-  <p><a href="{% url 'logout' %}">Logout</a></p>
+<div class="p-3">
+  <div class="jumbotron pt-2 pb-2" style="background-color: #f0f2f4">
+    <h1 class="display-4">Hi {{ user.username }}!</h1>
+    <p class="lead">Go to your <a href="{% url 'dashboard' %}">dashboard</a></p>
+    <p class="lead"><a href="{% url 'logout' %}">Logout</a></p>
+  </div>
 </div>
 {% else %}
-<div class="mx-auto border p-10" style="width: 50%;">
-<!-- <div class="mx-auto" style="width: 50%;"> -->
-  <p>You are not currently logged in.</p>
-  <p><a href="{% url 'login' %}">Login</a> to access the greatness that is IMTwitter.</p>
-  <p>Or if have not done so yet, <a href="{% url 'signup' %}">create an account</a></p>
+<div class="p-3">
+  <div class="jumbotron pt-2 pb-2" style="background-color: #f0f2f4">
+    <h1 class="display-4">You are not currently logged in.</h1>
+    <p class="lead"><a href="{% url 'login' %}">Login</a> to access the greatness that is IMTwitter.</p>
+    <p class="lead">Or if have not done so yet, <a href="{% url 'signup' %}">create an account</a></p>
+  </div>
 </div>
 {% endif %}
 
