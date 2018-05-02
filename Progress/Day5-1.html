@@ -54,6 +54,8 @@
   </ol>
 </ol>
 
+<p>Alright, we've got some work to do!</p>
+
 <h2>Sprint 7: Allow users to delete & edit posts they have created</h2>
 <p>To help me with this I'm following help from this <a href="http://www.mastercode.online/tutorials/language/tutorial_series/tutorial/how-to-django-blog-application-how-to-edit-post-in-django/">tutorial.</a></p>
 <ol>
@@ -73,6 +75,12 @@
   <li>Edit <code>add_post.html</code> with an if statement to display "delete post" when accessed with this view/URLconf </li>
   <li>Change <code>add_post.html</code> template so that delete warns the user of what they are doing.</li>
   <li>Add new button for deleting a post</li>
+  <li><strong>Succsess:</strong> We can now edit and delete posts, but only if we are the user.</li>
 </ol>
 
-<p>Alright, we've got some work to do!</p>
+<h3>Repeat the process of editing and deleting posts extending it to comments:</h3>
+<ol>
+  <li>The issue with comments is currently they are loaded as associated to the post with the ForeignKey. In the <code>add_comment_to_post.html</code> template I call the pk of the post and display that post - so the user knows what post they are replying to.</li>
+  <li>I am having trouble differentiating the pk for the post and the pk for the comment. I'm sure there's some small semantics I'm missing out on.</li>
+  <li>To start with, I will add the capability to delete the comment, removing the need to access the post to begin with.</li>
+</ol>

@@ -47,7 +47,7 @@ def add_comment_to_post(request, pk):
             return redirect('dashboard')
         else:
             form = CommentForm()
-            return render(request, 'add_comment_to_post.html', {'form': form, 'post':post})
+        return render(request, 'add_comment_to_post.html', {'form': form, 'post':post})
 
 def user_author_check(author, user):
     return author == user
@@ -82,19 +82,19 @@ def delete_post(request, pk):
     else:
         return HttpResponse("You do not have permission to delete this post.")
 
-# @login_required
-# def delete_comment(request, pk):
-#     comment = get_object_or_404(Comment, pk=pk)
-#     if user_author_check(comment.user, request.user):
-#         if request.method == "POST":
-#             form = CommentForm(request.POST, instance=comment)
-#             post.delete()
-#             return redirect('dashboard')
-#         else:
-#             form = PostForm(instance=post)
-#         return render(request, 'add_post.html', {'form': form, 'post': post})
-#     else:
-#         return HttpResponse("You do not have permission to delete this post.")
+@login_required
+def delete_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    if user_author_check(comment.user, request.user):
+        if request.method == "POST":
+            form = CommentForm(request.POST, instance=comment)
+            post.delete()
+            return redirect('dashboard')
+        else:
+            form = PostForm(instance=comment)
+        return render(request, 'add_comment_to_post.html', {'form': form, 'comment': comment})
+    else:
+        return HttpResponse("You do not have permission to delete this post.")
 
 @login_required
 def edit_comment(request, pk):

@@ -10,4 +10,5 @@ urlpatterns = [
     re_path(r'^edit-post/(?P<pk>\d+)/$', views.edit_post, name='edit_post'),
     re_path(r'^edit-comment/(?P<pk>\d+)/$', views.edit_comment, name='edit_comment'),
     re_path(r'^delete-post/(?P<pk>\d+)/$', views.delete_post, name='delete_post'),
+    re_path(r'^delete-comment/(?P<pk>\d+)/$', views.delete_comment, name='delete_comment'),
 ]

@@ -42,6 +42,13 @@
       {% for comment in post.comment_set.all %}
         <div class="card p-0 m-3" style="width: 80%; background-color:#F8F9FA;">
           <div class="card-body">
+            {% if comment.user == request.user %}
+            <div class="clearfix pb-3 text-right">
+              <span class="font-italic text-muted">As the poster you may:</span>
+              <a href="{% url 'edit_post' pk=post.pk %}"><button class="btn btn-success ml-3 mb-2">Edit post</button></a>
+              <a href="{% url 'delete_comment' pk=comment.pk %}"><button class="btn btn-danger ml-3 mb-2">Delete Comment</button></a>
+            </div>
+            {% endif %}
             <h5 class="card-title">Reply by <strong>{{ comment.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ comment.pub_date }}</span></h5>
             <p class="card-text">{{ comment.comment_text }}</p>
             <!-- <a href="{% url 'edit_comment' pk=comment.pk %}" class="float-right"><button class="center btn btn-primary" style="background-color:#1F7A8C;">Edit post</button></a> -->
