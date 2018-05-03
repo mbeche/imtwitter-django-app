@@ -38,6 +38,9 @@
 </h3>
 
 <p>Side note: I figured out how to get the post that the commenter is posting on onto the comment page. Post was already save with the <code>get_object_or_404</code> function, I just needed to load in on the template with <code>{{ post }}</code>.</p>
+
+<p>Alright, we've got some work to do!</p>
+
 <h2>Sprint 6: Use CSS to make things look nice</h2>
 <ol>
   <li>Center the "new post" and "new comment" dialogue box</li>
@@ -53,8 +56,6 @@
     <li>Contact info for me</li>
   </ol>
 </ol>
-
-<p>Alright, we've got some work to do!</p>
 
 <h2>Sprint 7: Allow users to delete & edit posts they have created</h2>
 <p>To help me with this I'm following help from this <a href="http://www.mastercode.online/tutorials/language/tutorial_series/tutorial/how-to-django-blog-application-how-to-edit-post-in-django/">tutorial.</a></p>
@@ -83,4 +84,5 @@
   <li>The issue with comments is currently they are loaded as associated to the post with the ForeignKey. In the <code>add_comment_to_post.html</code> template I call the pk of the post and display that post - so the user knows what post they are replying to.</li>
   <li>I am having trouble differentiating the pk for the post and the pk for the comment. I'm sure there's some small semantics I'm missing out on.</li>
   <li>To start with, I will add the capability to delete the comment, removing the need to access the post to begin with.</li>
+  <li>Success - I may be able to replicate the process with editing comments, however deleting comments is good enough for now!</li>
 </ol>
