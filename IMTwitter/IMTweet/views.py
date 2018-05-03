@@ -8,6 +8,7 @@ from .models import Comment
 from .forms import PostForm, CommentForm
 from django.utils import timezone
 from django.shortcuts import redirect
+from django.urls import reverse
 
 # def index(request):
 #     return HttpResponse("Hello, world. This is where you will soon be able to interact with a post interface.")
@@ -28,7 +29,7 @@ def add_post(request):
             post.pud_date = timezone.now()
             post.user = request.user
             post.save()
-            return redirect('dashboard')
+            return redirect('{}#mostrecent'.format(reverse('dashboard')))
     else:
         form = PostForm()
     return render(request, 'add_post.html', {'form': form})
@@ -44,7 +45,7 @@ def add_comment_to_post(request, pk):
             comment.user = request.user
             comment.post = post
             comment.save()
-            return redirect('dashboard')
+            return redirect('{}#post{}'.format(reverse('dashboard'), pk))
     else:
         form = CommentForm()
     return render(request, 'add_comment_to_post.html', {'form': form, 'post':post})
@@ -60,7 +61,7 @@ def edit_post(request, pk):
             form = PostForm(request.POST, instance=post)
             if form.is_valid():
                 form.save()
-                return redirect('dashboard')
+                return redirect('{}#post{}'.format(reverse('dashboard'), pk))
         else:
             form = PostForm(instance=post)
         return render(request, 'add_post.html', {'form': form, 'post': post})
@@ -74,7 +75,7 @@ def delete_post(request, pk):
         if request.method == "POST":
             form = PostForm(request.POST, instance=post)
             post.delete()
-            return redirect('dashboard')
+            return redirect('{}#mostrecent'.format(reverse('dashboard')))
         else:
             form = PostForm(instance=post)
         return render(request, 'add_post.html', {'form': form, 'post': post})
@@ -88,7 +89,7 @@ def delete_comment(request, pk):
         if request.method == "POST":
             form = CommentForm(request.POST, instance=comment)
             comment.delete()
-            return redirect('dashboard')
+            return redirect('{}#mostrecent'.format(reverse('dashboard')))
         else:
             form = CommentForm(instance=comment)
         return render(request, 'add_comment_to_post.html', {'form': form, 'comment': comment})
@@ -103,7 +104,7 @@ def edit_comment(request, pk):
             form = PostForm(request.POST, instance=comment)
             if form.is_valid():
                 form.save()
-                return redirect('dashboard')
+                return redirect('{}#comment{}'.format(reverse('dashboard'), pk))
         else:
             form = PostForm(instance=comment)
         return render(request, 'add_comment_to_post.html', {'form': form, 'comment': comment})

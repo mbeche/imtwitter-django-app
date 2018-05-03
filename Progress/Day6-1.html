@@ -50,6 +50,10 @@
   <li>There seems to be a few different options for code. The version I will use is: <code>return redirect('{}#first'.format(reverse('main.views.home', kwargs={'home_slug':slug})))</code></li>
   <li>I'm not completely certain why we use 'mains.views.home' instead of the URLconf name, but maybe they didn't use a name.</li>
   <li>I'm going to do this first with <code>add_comment_to_post()</code> and see how it works </li>
+  <li><strong>Note:</strong> Don't for get to import functions from the appropriate module! >_< (<code>from django.urls import reverse</code>) </li>
+  <li>After a bit of trial and error I was able to get this to work, however I've noticed that since my navbar has a fixed position, my anchors appear to be a bit lower than where I want them.</li>
+  <li>I figured to fix this I would need JavaScript. With some google searching I was able to find a way to scroll up X pixels when jumping to a bookmark link.</li>
+  <li>This workaround only works if (1) the page was loaded with a #bookmark url (e.g. when redirected after commenting on a post) or (2) when a link is clicked on inside of the page leading to this hashtage. I would need to dig into the JS to figure out how to make it work if someone manually changes the URL while already on the page. If the person is that tech savvy they can just scroll up on their own ^_^</li>
 </ol>
 
 <h2>Sprint 7: Allow users to delete & edit posts they have created</h2>
@@ -60,12 +64,20 @@
   <p>Breakdown of future work:</p>
   <ul>
     <li>Sprint 8: Load IMTwitter onto Digital Ocean for sharing</li>
-    <ol>
-      <li>I'm excited to do this. I'm curious how this process works. Is it the right time to execute though?</li>
-    </ol>
+    <ul>
+      <li>I'm excited to do this. I'm curious how this process works. Is it the right time to execute though considering it's not even required for subission?</li>
+    </ul>
     <li>Sprint 9: Create URL recognition in post/comment & load image if image URL is provided</li>
     <li>Sprint 10: Create views to sort posts and comments by author</li>
+    <ul>
+      <li>I don't think creating the view will be that much of a challenge. I just need to specify <code>post.user = "X"</code> where x is the current user or whatever user they are looking to find.</li>
+      <li>Method 1: Have a link on each user's name that will take you to a page that has posts just by that user. </li>
+      <li>Method 2: Have a dropdown menu at the top with all the users and have the ability to select what user you want to see posts from.</li>
+    </ul>
     <li>Sprint 11: Add search feature</li>
+    <ul>
+      <li>Additional to figuring out how to do this, I need to figure out how it will function. Are we searching just post and comment text and returning posts and comments with that text in it?</li>
+    </ul>
     <li>Sprint 12: Add capabilities of private messaging other users</li>
     <li>Sprint 13: Add advanced user function like change password/reset password</li>
   </ul>
