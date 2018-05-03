@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'home'
 
 WSGI_APPLICATION = 'imtwitter.wsgi.application'

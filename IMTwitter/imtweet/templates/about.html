@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Dashboard{% endblock %}
+{% block title %}About{% endblock %}
 
 {% block content %}
 <div class="w-100 p-3 row justify-content-center">
   <div class="pt-4 col-12 col-sm-11 col-md-10">
     <div class="jumbotron pt-2 pb-2" style="background-color: #f0f2f4">
-      <h1 class="display-4">Welcome to your Dashboard, {{ user }}!</h1>
-      <p class="lead align-bottom">This is a simple little post & comment app. Give it a spin!</p>
-      <hr class="my-0 mb-2" style="position:relative; bottom:5px;">
+      <img class="img-fluid border border-primary rounded float-right w-25" src="{% static "johnson_michael.jpg" %}" alt="billy the goat">
+      <h1 class="display-4">Hello <strong>{{ user }}</strong>!<br>I'm Michael, the creator of this app.</h1>
+      <p class="lead align-bottom">I created this app as part of an interview process with an insurance company in Des Moines, IA. The assignment was to create a Twitter-like app with certain features.</p>
+      <hr class="my-2" style="position:relative; bottom:5px;">
+      <p class="lead align-bottom">You can find out more about me here:</p>
       <div class="row">
         <div class="col-12">
           <div class="row">
