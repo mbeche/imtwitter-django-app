@@ -1,0 +1,72 @@
+<h1>Day 5: A Few Fixes, Moving Forward</h1>
+<em>May 3, 2018 at 9:49am</em>
+
+<p>Alright, time to reevaluate the situation:</p>
+<h2>Specified Capabilities</h2>
+<ul>
+  <li><strong>Completed:</strong><em>Users must create an account to add a new message</em></li>
+  <li>Message Specifications:</li>
+  <ul>
+    <li><strong>Completed:</strong><em>limit message characters to 140</em></li>
+    <li>If a message contains a url to an image, show the image on the page instead of the URL</li>
+    <li>Do not count characters that are part of a URL (for links or images)</li>
+  </ul>
+  <li><strong>Completed:</strong><em>Users can edit or delete messages they created</em></li>
+  <li>Users can filter to list messages:
+    <ul>
+      <li>They have authored</li>
+      <li>Other user's messages</li>
+      <li>All messages from all users (normal view?)</li>
+    </ul>
+  <li>Users can search for a message</li>
+  <li>Users can send private messages to each other</li>
+</ul>
+
+<p>So in actuality I only got one more feature implemented. It was a fun process though, learning how to allow users to edit and delete previous posts. I still am working on enabling comment edits, so let's take inventory of what's left on the sprints</p>
+
+<p>Side note: I figured out how to get the post that the commenter is posting on onto the comment page. Post was already save with the <code>get_object_or_404</code> function, I just needed to load in on the template with <code>{{ post }}</code>.</p>
+
+<p>Alright, we've got some work to do!</p>
+
+<h2>Sprint 6: Use CSS to make things look nice</h2>
+<ol>
+  <li>Center the "new post" and "new comment" dialogue box</li>
+  <li><strong>Completed:</strong><em>Add menu items that change whether you are logged in or not</li>
+  <ol type="a">
+    <li>Not logged in: only "About", "Login", "Create Account"</li>
+    <li>Logged in: "Create Post", "About", "Account", "Logout"</li>
+  </ol></em>
+  <li><del>Create</del> Finish about page that has more info</li>
+  <ol type="a">
+    <li>A short overview of what I've done with this project and why</li>
+    <li>Access to these notes to help the IMT team look through the process I took in creating this</li>
+    <li>Contact info for me</li>
+  </ol>
+</ol>
+
+<p><strong>Side Quest:</strong></p>
+<p>I'm still working on getting the redirect URL to load at the post you were commenting on, or the post you just made, etc. It's annoying to edit a comment and then have to scroll back down to where it was located. It's a little feature but it would be nice. I wrote about this some yesterday and may have found a fix <a href="https://stackoverflow.com/questions/11165267/django-redirect-with-anchor-parameters"></a>here, with a reverse lookup method as I suspected.</p>
+<ol>
+  <li>There seems to be a few different options for code. The version I will use is: <code>return redirect('{}#first'.format(reverse('main.views.home', kwargs={'home_slug':slug})))</code></li>
+  <li>I'm not completely certain why we use 'mains.views.home' instead of the URLconf name, but maybe they didn't use a name.</li>
+  <li>I'm going to do this first with <code>add_comment_to_post()</code> and see how it works </li>
+</ol>
+
+<h2>Sprint 7: Allow users to delete & edit posts they have created</h2>
+<p>This sprint is complete except for needing to add the edit comment feature. I had issues with calling the post pk when making a comment, so I was getting lost on which pk I was trying to reference. So, I decided to change everything to be just about the comment (pk, form, etc). I can call the <code>{{ comment }}</code> and display the comment_text on the website for edit comment, but I can't get the form to fill as an instance of the comment and I can't edit the comment. For now I will just disable the button and only have delete comment as an option. I will see if I can troubleshoot this with someone.</li>
+</ol>
+
+<h3>
+  <p>Breakdown of future work:</p>
+  <ul>
+    <li>Sprint 8: Load IMTwitter onto Digital Ocean for sharing</li>
+    <ol>
+      <li>I'm excited to do this. I'm curious how this process works. Is it the right time to execute though?</li>
+    </ol>
+    <li>Sprint 9: Create URL recognition in post/comment & load image if image URL is provided</li>
+    <li>Sprint 10: Create views to sort posts and comments by author</li>
+    <li>Sprint 11: Add search feature</li>
+    <li>Sprint 12: Add capabilities of private messaging other users</li>
+    <li>Sprint 13: Add advanced user function like change password/reset password</li>
+  </ul>
+</h3>
