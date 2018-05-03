@@ -82,3 +82,14 @@
     <li>Sprint 13: Add advanced user function like change password/reset password</li>
   </ul>
 </h3>
+
+<h2>Sprint 10: Create views to sort posts and comments by author</h2>
+<p>Method 2: Have a dropdown menu at the top with all the users and have the ability to select what user you want to see posts from.</li>
+<ol>
+  <li>Access users from: <code>from django.contrib.auth.models import User</code></li>
+  <li>Access users list with: <code>widget=forms.Select(choices=User.objects.all())</code> </li>
+  <li>I will use HTTP GET (template side) because I will not be altering the DB with this form (or will I use POST to query the BD? My limited training says a search is just "GET")</li>
+  <li>Create a view for the form</li>
+  <li>I've tried to do some troubleshooting with this. I have created a form that had the usernames of all users as a dropdown menu, however when I tried to call this form using {{ formname.as_p }} nothing showed up. Maybe it's because I need to create this from the model? I shouldn't need to because the model is already created..</li>
+  <li>I've made some headway on sorting by username with using REGEX in my URLconf to call the user in the view to be sorted by. I used the following URLconf <code>r'^posts/(?P<username>[-\w]+</code> I'm hoping I used the right REGEX at the end </li>
+</ol>

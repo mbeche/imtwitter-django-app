@@ -3,43 +3,6 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<div class="w-100 p-3 row justify-content-center">
-  <div class="pt-4 col-12 col-sm-11 col-md-10">
-    <div class="jumbotron pt-2 pb-2" style="background-color: #f0f2f4">
-      <h1 class="display-4">Welcome to your Dashboard, {{ user }}!</h1>
-      <p class="lead align-bottom">This is a simple little post & comment app. Give it a spin!</p>
-      <hr class="my-0 mb-2" style="position:relative; bottom:5px;">
-      <div class="row">
-        <div class="col-12">
-          <div class="row">
-            <div class="text-center col-12 col-md-1 text-right"><h4><i class="fas fa-comments"></i></h4></div>
-            <div class="col-12 col-md-11 text-left mb-2"><span class="align-middle">New to IMTwitter? Create a post to say hello!</span><br></div>
-          </div>
-          <div class="row">
-            <div class="text-center col-12 col-md-1 text-right"><h4><i class="fas fa-paw"></i></h4></div>
-            <div class="col-12 col-md-11 text-left mb-2"><span class="align-middle">Have a cute animal pic that needs to be shared? We're happy to have it.</span><br></div>
-          </div>
-          <div class="row">
-            <div class="text-center col-12 col-md-1 text-right"><h4><i class="fas fa-reply"></i></h4></div>
-            <div class="col-12 col-md-11 text-left mb-2"><span class="align-middle">Striken with the wittiest of retorts? Give 'em a comment!</span><br></div>
-          </div>
-          <div class="row">
-            <div class="text-center col-12 col-md-1 text-right"><h4><i class="fas fa-question-circle"></i></h4></div>
-            <div class="col-12 col-md-11 text-left mb-2"><span class="align-middle">Need help or want to know more about how this app was developed? See my "About" page.</span><br></div>
-          </div>
-        </div>
-      </div>
-      <p class="lead mt-3"><em>The IMTwitter world is your oyster!</em></p>
-    </div>
-  </div>
-</div>
-
-<div class="card-body row justify-content-center">
-  <form method="POST" class="post-form" label=''>{% csrf_token %}
-  {{ UserList.as_p }}
-  <button type="submit" class="save btn btn-default text-white"  style="background-color:#1F7A8C;">Send</button>
-  </form><br>
-</div>
 
 <div class="w-100 row justify-content-center">
   <div style="width: 80%;">
@@ -56,6 +19,8 @@
         <a href="{% url 'delete_post' pk=post.pk %}"><button class="btn btn-danger ml-3 mb-2">Delete post</button></a>
       </div>
       {% endif %}
+      <!-- <p>{{ author }}</p> -->
+      <p>{{ username }}</p>
       <h5 class="card-title">Posted by <strong>{{ post.user }}</strong> <span class="font-italic small mb-2 text-muted">on {{ post.pud_date }}</span></h5>
       <p class="card-text">{{ post.post_text }}</p>
     </div>

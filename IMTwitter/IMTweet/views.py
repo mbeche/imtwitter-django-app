@@ -20,6 +20,19 @@ def dashboard(request):
     comments = Comment.objects.all().order_by('-pud_date')
     return render(request, 'dashboard.html', {'section': 'dashboard', 'posts':posts, 'comments':comments})
 
+def view_sort(request, username):
+    # posts = Post.objects.all()
+    username = username
+    # author = Post.user
+    posts = Post.objects.all().filter(user__username=str(username))
+    return render(request, 'posts.html', {'posts': posts, 'username':username})
+
+# class CreateMyModelView(CreateView):
+#     model = MyModel
+#     form_class = MyModelForm
+#     template_name = 'myapp/template.html'
+#     success_url = 'myapp/success.html'
+
 @login_required
 def add_post(request):
     if request.method == "POST":
