@@ -85,4 +85,7 @@
   <li>I am having trouble differentiating the pk for the post and the pk for the comment. I'm sure there's some small semantics I'm missing out on.</li>
   <li>To start with, I will add the capability to delete the comment, removing the need to access the post to begin with.</li>
   <li>Success - I may be able to replicate the process with editing comments, however deleting comments is good enough for now!</li>
+  <li>I've been trouble shooting this and changed everything to be just about the comment (pk, form, etc). I can call the <code>{{ comment }}</code> and print the text on the edit comment page, but I can't get the form to fill as an instance of the comment and I can't edit the comment. For now I will just disable the button and only have delete comment as an option.</li>
 </ol>
+
+<p>While I was watching my partner test the website, I noticed how after editing a post or comment and after leaving a comment, the browser reloads to the top of the page. I figured out how to give each post and comment an ID with reference to their #, but I can't figure out how to change the redirect URL in my view. I tried creating a new URLconf with regex for the pk, but it had trouble with the reverse lookup with no arguments. Tomorrow I will try to do a reverse lookup on URLconf 'dashboard' in the views definition then try to concactonate it with the pk there.</p>

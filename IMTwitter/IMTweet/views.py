@@ -55,7 +55,6 @@ def user_author_check(author, user):
 @login_required
 def edit_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    user_auth = user_author_check(post.user, request.user)
     if user_author_check(post.user, request.user):
         if request.method == "POST":
             form = PostForm(request.POST, instance=post)
@@ -64,7 +63,7 @@ def edit_post(request, pk):
                 return redirect('dashboard')
         else:
             form = PostForm(instance=post)
-        return render(request, 'add_post.html', {'form': form, 'post': post, 'user_auth': user_auth})
+        return render(request, 'add_post.html', {'form': form, 'post': post})
     else:
         return HttpResponse("You do not have permission to edit this post.")
 
@@ -98,25 +97,15 @@ def delete_comment(request, pk):
 
 @login_required
 def edit_comment(request, pk):
-    return
-#     post = get_object_or_404(Post, pk=pk)
-#     if request.method == "POST":
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False, instance=comment)
-#             comment.pub_date = timezone.now()
-#             comment.user = request.user
-#             comment.post = post
-#             comment.save()
-#             return redirect('dashboard')
-#         else:
-#             form = CommentForm()
-#             return render(request, 'add_comment_to_post.html', {'form': form, 'post':post})
-#     comment = get_object_or_404(Comment, pk=pk)
-#     if request.method == "POST":
-#         form = CommentForm(request.POST, instance=comment)
-#         if form.is_valid():
-#             form.save()
-#     else:
-#         form = PostForm(instance=comment)
-#     return render(request, 'add_comment_to_post.html', {'form': form, 'comment': comment})
+    comment = get_object_or_404(Comment, pk=pk)
+    if user_author_check(comment.user, request.user):
+        if request.method == "POST":
+            form = PostForm(request.POST, instance=comment)
+            if form.is_valid():
+                form.save()
+                return redirect('dashboard')
+        else:
+            form = PostForm(instance=comment)
+        return render(request, 'add_comment_to_post.html', {'form': form, 'comment': comment})
+    else:
+        return HttpResponse("You do not have permission to edit this comment.")
