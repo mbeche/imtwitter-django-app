@@ -24,7 +24,9 @@ def view_sort(request, username):
     # posts = Post.objects.all()
     username = username
     # author = Post.user
+    print(username)
     posts = Post.objects.all().filter(user__username=str(username))
+    print(len(posts))
     return render(request, 'posts.html', {'posts': posts, 'username':username})
 
 # class CreateMyModelView(CreateView):
@@ -114,12 +116,12 @@ def edit_comment(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     if user_author_check(comment.user, request.user):
         if request.method == "POST":
-            form = PostForm(request.POST, instance=comment)
+            form = CommentForm(request.POST, instance=comment)
             if form.is_valid():
                 form.save()
                 return redirect('{}#comment{}'.format(reverse('dashboard'), pk))
         else:
-            form = PostForm(instance=comment)
+            form = CommentForm(instance=comment)
         return render(request, 'add_comment_to_post.html', {'form': form, 'comment': comment})
     else:
         return HttpResponse("You do not have permission to edit this comment.")
