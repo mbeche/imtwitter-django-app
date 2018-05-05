@@ -8,6 +8,9 @@ class UserList(forms.Form):
         list.append((e.username,e.username))
     field = forms.ChoiceField(choices=list)
 
+# class Search(forms.Form):
+#     field = forms.CharField(max_length=150), label='')
+
 class PostForm(forms.ModelForm):
     post_text = forms.CharField(max_length=140, widget=forms.Textarea(attrs={'rows':4, 'cols':35}), label='')
     class Meta:

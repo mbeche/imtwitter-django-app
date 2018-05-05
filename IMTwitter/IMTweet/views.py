@@ -26,8 +26,8 @@ def view_sort(request, username):
     # author = Post.user
     print(username)
     posts = Post.objects.all().filter(user__username=str(username))
-    print(len(posts))
-    return render(request, 'posts.html', {'posts': posts, 'username':username})
+    length = len(posts)
+    return render(request, 'posts.html', {'posts': posts, 'username':username, 'length':length})
 
 # class CreateMyModelView(CreateView):
 #     model = MyModel

@@ -1,0 +1,61 @@
+<h1>Day 7: Plateau - where to next?</h1>
+<em>May 3, 2018 at 9:49am</em>
+
+<p>Current state of affairs:</p>
+<h2>Specified Capabilities</h2>
+<ul>
+  <li><strong>Completed:</strong><em>Users must create an account to add a new message</em></li>
+  <li>Message Specifications:</li>
+  <ul>
+    <li><strong>Completed:</strong><em>limit message characters to 140</em></li>
+    <li>If a message contains a url to an image, show the image on the page instead of the URL</li>
+    <li>Do not count characters that are part of a URL (for links or images)</li>
+  </ul>
+  <li><strong>Completed:</strong><em>Users can edit or delete messages they created</em></li>
+  <li>Users can filter to list messages:
+    <ul>
+      <li><strong>Completed:</strong><em>They have authored</em></li>
+      <li><strong>Completed:</strong><em>Other user's messages</em></li>
+      <li><strong>Completed:</strong><em>All messages from all users (normal view?)</em></li>
+    </ul>
+  <li>Users can search for a message</li>
+  <li>Users can send private messages to each other</li>
+</ul>
+
+<p>A friend came over yesterday to troubleshoot some code and discuss the project. She mentioned that since not all of the project specifcations were required that it might be better to make sure I make what features I do have up and running work well and make sure my code is really clear.</p>
+
+<p>We also talked about testing the code. I am not so familiar with testing but I see the merit in it and know it's a bit deal with IMT. So I may spend some time this weekend working on making tests. Currently I'm having trouble getting them to work because there are so many dependencies used to create the view functions. Also, I'm not certain what other things I will test besides the view functions. I don't think there are unittests for HTML. I have been doing some user tests.</p>
+
+<p>Here are some odds and ends I want to tie up with my site:</p>
+<ol>
+  <li>Put Dashboard link onto navbar and change the collapse size to lg (it's too unintuative to have to click the "IMTwitter" link to go back to the dashboard)</li>
+  <li>Add a couple of instructions to the dashboard</li>
+  <ol>
+    <li><a href="#">Click here</a> to view a list of posts you have written in the past</li>
+    <li>You can also click on any person's name to access a sorted view that only shows posts by that person</li>
+    <li>Should I also add posts/comments to the sorted views? This might be a more complext task</li>
+  </ol>
+  <li>Edit the formatting of "Edit Comment" button</li>
+  <li>Continue working on the About page</li>
+  <ol type="a">
+    <li>A short overview of what I've done with this project and why</li>
+    <li>Access to these notes to help the IMT team look through the process I took in creating this</li>
+    <li>Contact info for me</li>
+  </ol>
+</ol>
+
+<p>Potential future work:</p>
+<ul>
+  <li>Sprint 8: Load IMTwitter onto Digital Ocean for sharing</li>
+  <ul>
+    <li>I'm excited to do this. I'm curious how this process works. Is it the right time to execute though considering it's not even required for subission?</li>
+  </ul>
+  <li>Sprint 9: Create URL recognition in post/comment & load image if image URL is provided</li>
+  <li><strong>Completed:</strong><em>Sprint 10: Create views to sort posts and comments by author</em></li>
+  <li>Sprint 11: Add search feature</li>
+  <ul>
+    <li>Additional to figuring out how to do this, I need to figure out how it will function. Are we searching just post and comment text and returning posts and comments with that text in it?</li>
+  </ul>
+  <li>Sprint 12: Add capabilities of private messaging other users</li>
+  <li>Sprint 13: Add advanced user function like change password/reset password</li>
+</ul>
