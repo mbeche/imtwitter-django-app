@@ -9,6 +9,9 @@ from .forms import PostForm, CommentForm
 from django.utils import timezone
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
+from django.views.generic import ListView
+
 
 # def index(request):
 #     return HttpResponse("Hello, world. This is where you will soon be able to interact with a post interface.")
@@ -20,12 +23,56 @@ def dashboard(request):
     comments = Comment.objects.all().order_by('-pud_date')
     return render(request, 'dashboard.html', {'section': 'dashboard', 'posts':posts, 'comments':comments})
 
-def view_sort(request, username):
+
+
+# class BlogSearchListView(ListView):
+#     """
+#     Display a Blog List page filtered by the search query.
+#     """
+#     # def __init__(self,q):
+#     #     self.q=q
+#     #     print(q)
+#     model = Post
+#     paginate_by = 10
+#     def get_queryset(self):
+#         qs = Post.objects.all()
+#         keywords = self.request.GET.get('q')
+#         if keywords:
+#             query = SearchQuery(keywords)
+#             vector = SearchVector('post_text')
+#             qs = qs.annotate(search=vector).filter(search=query)
+#             qs = qs.annotate(rank=SearchRank(vector, query)).order_by('-rank')
+#         return qs
+
+def search_text(request):
+    posts = Post.objects.all()
+    q = request.GET['q']
+    results = Post.objects.filter(post_text__icontains=q)
+    if q == '':
+        message ='You submitted an empty search!'
+        return render (request,"posts.html",{'posts': posts, 'message':message})
+    elif len(results) != 0:
+        length = len(results)
+        posts = results
+        return render (request,"posts.html",{'posts':posts,'query':q, 'length':length})
+    # if 'q' in request.GET['q']:
+    #     posts = Post.objects.filter(post_text__icontains=q)
+    #     return render(request, 'posts.html', {'posts': posts, 'q':q})
     # posts = Post.objects.all()
-    username = username
-    # author = Post.user
-    print(username)
-    posts = Post.objects.all().filter(user__username=str(username))
+    # # return render(request, 'posts.html', {'posts': posts, 'q':q})
+    elif len(q) == 1:
+        res = 2 #search length of 1 seems not to be working
+        return render (request,"posts.html",{'posts': posts, 'query':q, 'res':res})
+    else:
+        noposts = 1
+        return render (request,"posts.html",{'posts': posts, 'query':q, 'noposts':noposts})
+    # model = Post
+    # posts = Post.objects.all()
+    # else:
+    #     print(':( :( :(')
+
+def view_sort(request, username):
+    posts = Post.objects.filter(user__username=str(username))
     length = len(posts)
     return render(request, 'posts.html', {'posts': posts, 'username':username, 'length':length})
 

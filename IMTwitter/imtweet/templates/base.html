@@ -10,7 +10,7 @@
   <title>{% block title %}IMTwitter{% endblock %}</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color:#053C5E;">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color:#053C5E;">
     <a class="navbar-brand mb-0 pb-2 h1" href="{% url 'dashboard' %}"><i class="fas fa-comment-alt pr-2" style="font-size: 27px"></i>IMTwitter</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,14 +30,12 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <!-- <form class="form-inline border-right pr-2">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.5);">Search</button>
-        </form> -->
-        <!-- Implement if I have "change password" or "reset password" options -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Account</a>
-        </li> -->
+        <form class="navbar-form" role="search" action="{% url 'post_search' %}" method="get">
+          <div class="input-group">
+            <input type="text" id="searchBox" class="searchfield form-control mr-sm-2" name="q" placeholder="Search">
+            <input type="submit" class="btn" value="Search">
+          </div>
+        </form>
         <li class="nav-item align">
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>

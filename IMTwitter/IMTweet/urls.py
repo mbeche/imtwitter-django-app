@@ -6,6 +6,8 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
     path('dashboard/', views.dashboard , name='dashboard'),
+    # re_path(r'^search/q/(?P<query>\w+)/$', views.search_text , name='post_search'),
+    path('search/', views.search_text , name='post_search'),
     path('addpost/', views.add_post, name='add_post'),
     re_path(r'^posts/(?P<username>[\@.\+\-\w]+)/?', views.view_sort , name='view_sort'),
     re_path(r'^post_comment_on_(?P<pk>\d+)/?', views.add_comment_to_post , name='add_comment_to_post'),
